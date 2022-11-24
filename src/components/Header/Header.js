@@ -4,10 +4,8 @@ import Logo from '../../images/icon.png'
 import './Header.css'
 const Header = () => {
     return (
-        <nav>
-            <div className="logo">
-                <img src={Logo} alt="" />
-            </div>
+        <nav className='header'>
+            <Link to='/home' > <img src={Logo} alt="" /> </Link>
             <div className="nav-item">
                 <Link to={'/'} >Home</Link>
                 <Link to={'/shop'} >Shop</Link>
