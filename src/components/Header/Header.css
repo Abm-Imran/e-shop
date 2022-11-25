@@ -5,6 +5,9 @@
     padding: 0 100px;
     justify-content: space-between;
     background: #282A3A;
+    position: sticky;
+    top: 0;
+    z-index: 1;
 }
 .header img{
     height: 40px;
