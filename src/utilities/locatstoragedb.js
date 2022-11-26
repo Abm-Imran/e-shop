@@ -2,18 +2,22 @@
 
 const localStorageDb = (id) => {
 
-    let shoppingCart = {};
+    // let shoppingCart = {};
+    let shoppingCart;
     const storedCart = localStorage.getItem('shopping-cart');
     if (storedCart) {
-         shoppingCart = JSON.parse(storedCart);
+        shoppingCart = JSON.parse(storedCart);
+    }
+    else {
+        shoppingCart = {};
     }
 
     const quantity = shoppingCart[id];
-    if(quantity){
+    if (quantity) {
         const newQuantity = quantity + 1;
         shoppingCart[id] = newQuantity;
     }
-    else{
+    else {
         shoppingCart[id] = 1;
     }
 
@@ -21,4 +25,18 @@ const localStorageDb = (id) => {
 }
 
 
-export { localStorageDb }
+const getStoredCart = () => {
+
+    let shoppingCart;
+    const storedCart = localStorage.getItem('shopping-cart');
+    if (storedCart) {
+        shoppingCart = JSON.parse(storedCart);
+    }
+    return shoppingCart;
+}
+
+
+export {
+    localStorageDb,
+    getStoredCart
+}
