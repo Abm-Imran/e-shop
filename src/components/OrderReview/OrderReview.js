@@ -1,6 +1,7 @@
 import React from 'react';
 import useCart from '../../hooks/useCart';
 import useProduct from '../../hooks/useProduct';
+import { removeFromDb } from '../../utilities/locatstoragedb';
 import Cart from '../Cart/Cart';
 import ReviewItem from '../ReviewItem/ReviewItem';
 
@@ -9,8 +10,11 @@ const OrderReview = () => {
     const [cart, setCart] = useCart(products);
     // console.log(products.length);
     const handleRemoveItem = (clickedProduct) =>{
-        console.log(clickedProduct);
-        
+        // console.log(clickedProduct);
+        const restProducts = cart.filter(product => product.id !== clickedProduct.id);
+        setCart(restProducts); 
+        removeFromDb(clickedProduct.id);
+
     }
 
     return (
