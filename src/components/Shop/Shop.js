@@ -5,6 +5,7 @@ import { getStoredCart, localStorageDb } from '../../utilities/locatstoragedb';
 import Cart from '../Cart/Cart';
 import Product from '../Product/Product';
 import './Shop.css'
+import { Link } from 'react-router-dom';
 
 const Shop = () => {
     const [products, setProducts] = useProduct();
@@ -36,7 +37,7 @@ const Shop = () => {
         if (!cartItem) {
             selectedItem.quantity = 1;
             newCart = [...cart, selectedItem];
-            
+
         }
         else {
             const rest = cart.filter(cartItem => cartItem.id !== selectedItem.id);
@@ -64,7 +65,7 @@ const Shop = () => {
 
                 <Cart
                     cart={cart}
-                ></Cart>
+                > <Link to={'/order-review'} ><button>Order Review</button></Link> </Cart>
             </div>
         </div>
     );

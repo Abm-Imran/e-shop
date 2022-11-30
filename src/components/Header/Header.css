@@ -21,6 +21,10 @@
     font-size: 20px;
     font-weight: bold;
 }
-.nav-item a:hover{
+/* .nav-item a:hover{
     color: #E14D2A;
+} */
+
+.nav-item .active{
+    color: orangered;
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import useCart from '../../hooks/useCart';
 import useProduct from '../../hooks/useProduct';
 import { removeFromDb } from '../../utilities/locatstoragedb';
@@ -9,10 +10,10 @@ const OrderReview = () => {
     const [products, setProducts] = useProduct();
     const [cart, setCart] = useCart(products);
     // console.log(products.length);
-    const handleRemoveItem = (clickedProduct) =>{
+    const handleRemoveItem = (clickedProduct) => {
         // console.log(clickedProduct);
         const restProducts = cart.filter(product => product.id !== clickedProduct.id);
-        setCart(restProducts); 
+        setCart(restProducts);
         removeFromDb(clickedProduct.id);
 
     }
@@ -22,16 +23,18 @@ const OrderReview = () => {
             <div className="review-product-container">
                 {
                     cart.map(product => <ReviewItem
-                    key={product.id}
-                    product={product}
-                    handleRemoveItem = {handleRemoveItem}
+                        key={product.id}
+                        product={product}
+                        handleRemoveItem={handleRemoveItem}
                     ></ReviewItem>)
                 }
             </div>
             <div className="cart-container">
                 <Cart
                     cart={cart}
-                ></Cart>
+                >
+                    <Link to={'/inventory'} ><button>Check Out</button></Link>
+                </Cart>
             </div>
         </div>
     );
